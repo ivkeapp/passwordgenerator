@@ -7,11 +7,18 @@
     $changetonum2 = $_POST['changetonum2'];
     $changetonum3 = $_POST['changetonum3'];
 
-    $words = array();
-    $fh = fopen('words.txt','r');
+    $zanimanja = array();
+    $fh = fopen('zanimanja.txt','r');
     while ($line = fgets($fh)) {
-    array_push($words, trim($line));
+    array_push($zanimanja, trim($line));
     }
     fclose($fh);
+
+    $pridevi = array();
+    $f = fopen('pridevi.txt','r');
+    while ($line = fgets($f)) {
+    array_push($pridevi, trim($line));
+    }
+    fclose($f);
 
 ?>

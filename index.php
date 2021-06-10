@@ -87,5 +87,46 @@
 				</div>
 			</div>
 		</div>
+        <script>
+			$("#btn-generate").click(function () {
+
+				var wordlen = $(".wordlen:checked").val();
+				var wordnum = parseInt($(".wordnum:checked").val());
+				var changetonum = '';
+				var changetonum2 = '';
+				var changetonum3 = '';
+				if($('#changetonum').is(":checked")){
+					changetonum = $("#changetonum:checked").val();
+				} else {
+					changetonum = 0;
+				}
+				if($('#changetonum2').is(":checked")){
+					changetonum2 = $("#changetonum2:checked").val();
+				} else {
+					changetonum2 = 0;
+				}
+				if($('#changetonum3').is(":checked")){
+					changetonum3 = $("#changetonum3:checked").val();
+				} else {
+					changetonum3 = 0;
+				}
+
+			   $.ajax({
+				  url: "generatepass.php",
+				  type: "POST",
+				  dataType: "json",
+				  data: {wordlen: wordlen, wordnum: wordnum, changetonum: changetonum, changetonum2: changetonum2, changetonum3: changetonum3},
+				  success: function(data, textStatus, jqXHR) {
+					  $("#password").text(data);
+					  //console.log(data);
+				  },
+				  error: function (jqXHR, textStatus, errorThrown) {
+					console.log(jqXHR);
+					console.log(textStatus);
+					console.log(errorThrown);
+				  }
+			  });
+			 });
+		</script>
     </body>
 </html>

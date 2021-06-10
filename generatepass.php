@@ -51,7 +51,39 @@
     }
 
     function getNumOfWords($string) {
-        
+        $string = preg_replace('/\s+/', ' ', trim($string));
+        $words = explode(" ", $string);
+        return count($words);
+    }
+
+    if(getNumOfWords($word)>=$wordnum){
+        $word = str_replace(" ", ".", $word);
+        $word = mb_convert_case($word, MB_CASE_TITLE, "UTF-8");
+        if($changetonum==='1'){
+            $word = str_replace("o", "0", $word);
+        }
+        if($changetonum2==='2'){
+            $word = str_replace("i", "1", $word);
+        }
+        if($changetonum3==='3'){
+            $word = str_replace("e", "3", $word);
+        }
+    
+        echo json_encode($word);
+    } elseif(getNumOfWords($word)<$wordnum) {
+        $word = $pridevi[rand(0,count($pridevi)-1)] . "." . $word;
+        $word = str_replace(" ", ".", $word);
+        $word = mb_convert_case($word, MB_CASE_TITLE, "UTF-8");
+        if($changetonum==='1'){
+            $word = str_replace("o", "0", $word);
+        }
+        if($changetonum2==='2'){
+            $word = str_replace("i", "1", $word);
+        }
+        if($changetonum3==='3'){
+            $word = str_replace("e", "3", $word);
+        }
+        echo json_encode($word);
     }
 
 ?>

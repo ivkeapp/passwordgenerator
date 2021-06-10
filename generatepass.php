@@ -21,4 +21,37 @@
     }
     fclose($f);
 
+    $word = getRandom($zanimanja, $wordlen);
+
+    function getRandom(&$zanimanja, &$wordlen){
+        $randomZanimanje = $zanimanja[rand(0,count($zanimanja)-1)];
+    
+        if($wordlen==='1'){
+            if(mb_strlen($randomZanimanje)<=6){
+                return $randomZanimanje;
+            } else {
+                $randomZanimanje = getRandom($zanimanja, $wordlen);
+                return $randomZanimanje;
+            }
+        } elseif($wordlen==='2'){
+            if(mb_strlen($randomZanimanje)<13 AND mb_strlen($randomZanimanje)>6){
+                return $randomZanimanje;
+            } else {
+                $randomZanimanje = getRandom($zanimanja, $wordlen);
+                return $randomZanimanje;
+            }
+        } elseif ($wordlen==='3') {
+            if(mb_strlen($randomZanimanje)>12){
+                return $randomZanimanje;
+            } else {
+                $randomZanimanje = getRandom($zanimanja, $wordlen);
+                return $randomZanimanje;
+            }
+        }
+    }
+
+    function getNumOfWords($string) {
+        
+    }
+
 ?>
